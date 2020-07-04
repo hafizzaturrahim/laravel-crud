@@ -9,12 +9,13 @@ use App\Models\QuestionModel;
 class AnswerController extends Controller 
 {
 	public function index($id){
-		$question = QuestionModel::get_single_data($id);
-		$question = json_decode(json_encode($question), true);
-		$answer = AnswerModel::get_single_data($id);
-		$question['answer'] = json_decode(json_encode($answer), true);
-		$question['count'] = AnswerModel::get_single_data($id)->count();
-		return view('crud.single',compact('question'));
+		$data['question'] = QuestionModel::get_single_data($id);
+		//$question = json_decode(json_encode($question), true);
+		$data['answer'] = AnswerModel::get_data($id);
+		//$question['answer'] = json_decode(json_encode($answer), true);
+		$data['count'] = AnswerModel::get_data($id)->count();
+		return view('crud.single',compact('data'));
+		//dd(compact('data'));
 	}
 
 	public function store(Request $request,$id){

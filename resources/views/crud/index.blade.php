@@ -21,6 +21,7 @@
 		<table id="example1" class="table table-bordered table-striped">
 			<thead>
 				<tr>
+					<th>No.</th>
 					<th>Judul Pertanyaan</th>
 					<th>Pertanyaan</th>
 					<th>Tanggal Dibuat</th>
@@ -31,15 +32,16 @@
 			<tbody>
 				@foreach ($question as $item)
 				<tr>
+					<td>{{$loop->iteration}} </td>
 					<td><a href="/jawaban/{{$item->id_question}} ">{{$item->title}}</a></td>
 					<td>{{$item->description}}</td>
 					<td>{{$item->created_at}}</td>
 					<td>{{$item->updated_at}}</td>
-					<td><a class="btn btn-warning" href="/pertanyaan/{{$item->id_question}}/edit">Edit</a>
+					<td><a class="btn btn-sm btn-warning" href="/pertanyaan/{{$item->id_question}}/edit">Edit</a>
 						<form action="/pertanyaan/{{$item->id_question}}" method="POST" >
 							@csrf
 							@method('DELETE')
-							<button type="submit" class="btn btn-danger"> <i class="fas fa fa-trash"></i></button>
+							<button type="submit" class="btn btn-sm btn-danger"> <i class="fas fa fa-trash"></i></button>
 						</form>
 					</td>
 				</tr>

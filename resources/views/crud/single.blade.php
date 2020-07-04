@@ -3,7 +3,7 @@
 @section('header')
 <div class="row mb-2">
 	<div class="col-sm-6">
-		<h1>{{$question[0]['title']}}</h1>
+		<h1>{{$data['question']->title}}</h1>
 	</div>
 	<div class="col-sm-6">
 		<ol class="breadcrumb float-right">
@@ -23,11 +23,11 @@
 				<span class="username">
 					<a href="#">Jonathan Burke Jr.</a>
 				</span>
-				<span class="description"> <i class="nav-icon far fa-calendar-alt"></i> {{$question[0]['created_at']}}  <i> (last edited : {{$question[0]['updated_at']}})</i></span>
+				<span class="description"> <i class="nav-icon far fa-calendar-alt"></i> {{$data['question']->created_at}}  <i> (last edited : {{$data['question']->updated_at}})</i></span>
 			</div>
 			<!-- /.user-block -->
 			<p>
-				{{$question[0]['description']}}
+				{{$data['question']->description}}
 			</p>
 		</div>
 		<!-- /.post -->		
@@ -36,22 +36,22 @@
 
 <div class="card card-outline">
 	<div class="card-header">
-		<label for="description">Jawaban ({{$question['count']}})</label>
+		<label for="description">Jawaban ({{$data['count']}})</label>
 	</div>
 	<div class="card-body">
 		<!-- Post -->
-		@foreach ($question['answer'] as $item)
+		@foreach ($data['answer'] as $item)
 		<div class="post">
 			<div class="user-block">
 				<img class="img-circle img-bordered-sm" src="{{ asset('/adminlte/dist/img/user4-128x128.jpg') }}" alt="user image">
 				<span class="username">
 					<a href="#">Jonathan Burke Jr.</a>
 				</span>
-				<span class="description"><i class="nav-icon far fa-calendar-alt"></i> {{$item['created_at']}}  <i> (last edited : {{$item['updated_at']}})</i></span>
+				<span class="description"><i class="nav-icon far fa-calendar-alt"></i> {{$item->created_at}}  <i> (last edited : {{$item->updated_at}})</i></span>
 			</div>
 			<!-- /.user-block -->
 			<p>
-				{{$item['description']}}
+				{{$item->description}}
 			</p>
 		</div>
 		@endforeach
@@ -64,7 +64,7 @@
 	<div class="card-body">
 		<!-- Post -->
 		<div class="post">
-			<form action="/jawaban/{{$question[0]['id_question']}}" method="POST">
+			<form action="/jawaban/{{$data['question']->id_question}}" method="POST">
 				@csrf
 				<div class="form-group">
 					<label for="description">Berikan jawaban anda :</label>

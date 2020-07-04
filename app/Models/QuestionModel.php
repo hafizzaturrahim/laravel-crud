@@ -14,7 +14,7 @@ class QuestionModel{
 	}
 
 	public static function get_single_data($id){
-		$result = DB::table('question')->where('id_question',$id)->get();
+		$result = DB::table('question')->where('id_question',$id)->first();
 		return $result;
 	}
 

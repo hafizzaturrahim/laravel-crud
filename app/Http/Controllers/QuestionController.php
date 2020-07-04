@@ -27,8 +27,8 @@ class QuestionController extends Controller
 
     public function edit($id){
         $question = QuestionModel::get_single_data($id);
-        $question = json_decode(json_encode($question), true);
         return view('crud.form-edit-question',compact('question'));
+        //dd(compact('question'));
     }
 
     public function update(Request $request,$id){

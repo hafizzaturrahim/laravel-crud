@@ -8,7 +8,7 @@ class AnswerModel{
 		return $new_answer;
 	}
 
-	public static function get_single_data($id){
+	public static function get_data($id){
 		$result = DB::table('answer')->where('id_question',$id)->get();
 		return $result;
 	}
