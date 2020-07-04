@@ -21,6 +21,7 @@ class QuestionController extends Controller
     	$title = $request->input('title');
     	$description = $request->input('description');
     	$data = array('title'=>$title,'description'=>$description);
+        //untuk tanggal sudah otomatis
     	$question = QuestionModel::save($data);
     	return redirect()->action('QuestionController@index');
     }
